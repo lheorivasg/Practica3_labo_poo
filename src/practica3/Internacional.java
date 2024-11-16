@@ -61,7 +61,7 @@ public class Internacional extends Cuenta implements IConversion{
     
   
     public boolean puedeRealizarTransaccion(){
-        if(numTransacciones >= 5){
+        if(this.numTransacciones >= 5){
             System.out.println("No se puede hacer la transaccion");
             return false;
         }
@@ -78,7 +78,7 @@ public class Internacional extends Cuenta implements IConversion{
         
         if(monto <= saldo){
             saldo -= monto;
-            numTransacciones++;
+            this.numTransacciones++; // Tambien se podria usar el metodo de setNumeroTransacicones(this.numTransacciones + 1)
             System.out.println("Se ha retirado "+ monto);
         } else {
             System.out.println("Saldo insuficiente");
@@ -96,7 +96,7 @@ public class Internacional extends Cuenta implements IConversion{
         
         if(monto > 0){
             saldo += monto;
-            numTransacciones++;
+            this.numTransacciones++; // Tambien se podria usar el metodo de setNumeroTransacicones(this.numTransacciones + 1)
             System.out.println("Se ha depositado "+ monto);
         } else {
             System.out.println("No se pueden depositar valores negativos");
@@ -158,7 +158,7 @@ public class Internacional extends Cuenta implements IConversion{
     public String obtenerDatos() {
         
         return "Cuenta{" + "Titular=" + titular + ", numCuenta=" + numCuenta + ", saldo=" + saldo + 
-                ", tipoDivisa="+ tipoDivisa +", numTransaccion="+ numTransacciones +
+                ", tipoDivisa="+ this.tipoDivisa +", numTransaccion="+ this.numTransacciones +
                 ", SaldoExtranjero="+ convertirDivisa() +'}';
         
     }       
